@@ -2,13 +2,53 @@ import 'package:flutter/material.dart';
 import 'dart:developer';
 import 'modules/menu.dart';
 import 'modules/login.dart';
+import '../PagesNavigation/NavigationBar.dart';
+import '../PagesNavigation/routes.dart';
 
-// void main() {
-//   runApp(const MaterialApp(
-//     title: 'Navigation Basics',
-//     home: FirstRoute(),
-//   ));
-// }
 void main() {
   runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Demo',
+        theme: ThemeData(
+            colorScheme:
+                ColorScheme.fromSwatch(primarySwatch: Colors.deepPurple)),
+        home: HomePage());
+  }
+}
+
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int index = 0;
+  BarNavig? myBN;
+  @override
+  void initState() {
+    myBN = BarNavig(currentIndex: (i) {
+      setState(() {
+        index = i;
+      });
+    });
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      bottomNavigationBar: myBN,
+      body: routes(index: index),
+    );
+  }
 }

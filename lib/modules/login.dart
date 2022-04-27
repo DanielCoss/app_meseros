@@ -1,33 +1,16 @@
 import 'package:flutter/material.dart';
-import '../modules/tables.dart';
+import 'package:meseros/main.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Meseros',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Login Meseros'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+class Login extends StatefulWidget {
+  const Login({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<Login> createState() => _Login();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _Login extends State<Login> {
   final myController1 = TextEditingController();
   final myController2 = TextEditingController();
 
@@ -97,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const SecondRoute()),
+                              builder: (context) => const HomePage()),
                         );
                       },
                     )),
