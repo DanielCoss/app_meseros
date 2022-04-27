@@ -6,7 +6,7 @@ import '../PagesNavigation/NavigationBar.dart';
 import '../PagesNavigation/routes.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const Login());
 }
 
 class MyApp extends StatelessWidget {
@@ -16,11 +16,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Demo',
+        title: 'Meseros',
         theme: ThemeData(
             colorScheme:
                 ColorScheme.fromSwatch(primarySwatch: Colors.deepPurple)),
-        home: HomePage());
+        home: const HomePage());
   }
 }
 

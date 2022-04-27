@@ -1,16 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:meseros/main.dart';
 
-class Login extends StatefulWidget {
-  const Login({Key? key, required this.title}) : super(key: key);
-
-  final String title;
+class Login extends StatelessWidget {
+  const Login({Key? key}) : super(key: key);
 
   @override
-  State<Login> createState() => _Login();
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Meseros',
+        theme: ThemeData(
+            colorScheme:
+                ColorScheme.fromSwatch(primarySwatch: Colors.deepPurple)),
+        home: const LoginPage());
+  }
 }
 
-class _Login extends State<Login> {
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
+
+  @override
+  State<LoginPage> createState() => _Login();
+}
+
+class _Login extends State<LoginPage> {
   final myController1 = TextEditingController();
   final myController2 = TextEditingController();
 
