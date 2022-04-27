@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'dart:developer';
 import 'modules/menu.dart';
 import 'modules/login.dart';
@@ -34,6 +35,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int index = 0;
   BarNavig? myBN;
+
+  // static const SystemUiOverlayStyle overlayStyle = SystemUiOverlayStyle(
+  //   systemNavigationBarColor: Colors.red,
+  //   systemNavigationBarIconBrightness: Brightness.light,
+  //   systemNavigationBarDividerColor: Colors.blue,
+  // );
+
   @override
   void initState() {
     myBN = BarNavig(currentIndex: (i) {
@@ -42,6 +50,9 @@ class _HomePageState extends State<HomePage> {
       });
     });
     super.initState();
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    //   SystemChrome.setSystemUIOverlayStyle(overlayStyle);
+    // });
   }
 
   @override

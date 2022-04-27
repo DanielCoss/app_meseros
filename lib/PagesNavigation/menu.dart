@@ -15,17 +15,18 @@ class menu extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             bottom: const TabBar(
-              unselectedLabelColor: Colors.white,
+              labelColor: Colors.white,
+              unselectedLabelColor: Colors.white54,
               tabs: [
-                Text('Comidas'),
-                Text('Bebidas'),
-                Text('Postres'),
+                Text('COMIDAS', style: TextStyle(fontSize: 14.0)),
+                Text('BEBIDAS', style: TextStyle(fontSize: 14.0)),
+                Text('POSTRES', style: TextStyle(fontSize: 14.0)),
               ],
             ),
             title: const Text('Menu'),
           ),
-          body: TabBarView(
-              children: <Widget>[new comidas(), new bebidas(), new postres()]),
+          body: const TabBarView(
+              children: <Widget>[comidas(), bebidas(), postres()]),
         ),
       ),
       theme: ThemeData(
