@@ -30,9 +30,6 @@ class _Login extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Meseros'),
-      ),
       body: ListView(
         children: [
           Center(
