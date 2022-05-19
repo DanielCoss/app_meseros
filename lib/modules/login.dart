@@ -7,12 +7,12 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Meseros',
-        theme: ThemeData(
-            colorScheme:
-                ColorScheme.fromSwatch(primarySwatch: Colors.deepPurple)),
-        home: const LoginPage());
+      debugShowCheckedModeBanner: false,
+      title: 'Meseros',
+      theme: ThemeData(
+          colorScheme:
+              ColorScheme.fromSwatch(primarySwatch: Colors.deepPurple)),
+      home: const LoginPage());
   }
 }
 
@@ -31,7 +31,7 @@ class _Login extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
-        children: [
+        children: <Widget>[
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -93,7 +93,8 @@ class _Login extends State<LoginPage> {
                               builder: (context) => const HomePage()),
                         );
                       },
-                    )),
+                    )
+                ),
               ],
             ),
           ),
