@@ -34,11 +34,11 @@ class menu extends StatelessWidget {
                       color: Colors.white,
                     ),
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const settings()),
-                      );
+                      //Navigator.push(
+                      //context,
+                      //MaterialPageRoute(
+                      //builder: (context) => const settings()),
+                      //);
                     },
                   ),
                 ),

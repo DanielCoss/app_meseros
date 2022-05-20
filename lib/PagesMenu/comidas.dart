@@ -1,50 +1,99 @@
 import 'package:flutter/material.dart';
 
-class comidas extends StatelessWidget{
-  const comidas({Key? key}): super(key:key);
+class OrdenesItem {
+  String nombre;
+  bool disponible;
+  String piezas;
+  String precio;
+
+  bool selected;
+
+  OrdenesItem(
+      this.nombre, this.disponible, this.piezas, this.precio, this.selected);
+}
+
+List<OrdenesItem> _totalcomidas = [
+  OrdenesItem("Pastel Azteca", true, "20", "20", false),
+  OrdenesItem("Hamburguesa", false, "20", "20", false),
+  OrdenesItem("Hot dog", false, "20", "20", false),
+  OrdenesItem("Pizza individual", false, "20", "20", false),
+  OrdenesItem("Pizza familiar", false, "20", "20", false),
+];
+
+class comidas extends StatefulWidget {
   @override
-  Widget build(BuildContext context){
+  _comidasState createState() => _comidasState();
+}
+
+class _comidasState extends State<comidas> {
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
-          child: Container(
-
-            child: Table(
-
-                defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-                border: TableBorder(bottom: BorderSide(color:Colors.black,style: BorderStyle.none,width: 1.5)),
-
-                children: [TableRow(
-                    children: [
-                      Text('Nombre',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold)),
-                      Text('Disponible',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold)),
-                      Text('Piezas',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold)),
-                      Text('Precio',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold)),
-                    ]),
-                  TableRow(
-                      children: [
-                        Text('Pastel Aztexa',textAlign: TextAlign.center),
-                        Text('Si',textAlign: TextAlign.center),
-                        Text('12',textAlign: TextAlign.center),
-                        Text('100',textAlign: TextAlign.center),
-                      ]),
-                  TableRow(
-                      children: [
-                        Text('Hamburguesa',textAlign: TextAlign.center),
-                        Text('Si',textAlign: TextAlign.center),
-                        Text('20',textAlign: TextAlign.center),
-                        Text('100',textAlign: TextAlign.center),
-                      ]),
-                  TableRow(
-                      children: [
-                        Text('Hot dog',textAlign: TextAlign.center),
-                        Text('No',textAlign: TextAlign.center),
-                        Text('N/A',textAlign: TextAlign.center),
-                        Text('100',textAlign: TextAlign.center),
-                      ]),
-                ]),
-
-          ),
-        )
-    );
+      child: _buildTable(sortAscending: true),
+    ));
   }
 }
+
+Widget _buildTable({bool sortAscending = true}) {
+  return DataTable(
+    columns: <DataColumn>[
+      const DataColumn(
+          label: Text(
+            'Nombre',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          tooltip: 'Nombre'),
+      const DataColumn(
+          label: Text(
+            'Disponible',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          tooltip: 'Disponibilidad'),
+      DataColumn(
+        label: Text(
+          'Piezas',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        tooltip: 'Piezas en existencia',
+        //onSort: (int index,bool ascending )
+      ),
+      DataColumn(
+        label: Text(
+          'Precio',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        tooltip: 'Precio',
+        //onSort: (int index,bool ascending )
+      )
+    ],
+    rows: _totalcomidas.map<DataRow>((OrdenesItem orden) {
+      return DataRow(
+        cells: <DataCell>[
+          DataCell(
+            Text('${orden.nombre}'),
+          ),
+          DataCell((orden.disponible)
+              ? Icon(Icons.radio_button_checked_outlined)
+              : Icon(Icons.radio_button_off)),
+          DataCell(
+            Text('${orden.piezas}'),
+          ),
+          DataCell(
+            Text('${orden.precio}'),
+          ),
+        ],
+      );
+    }).toList(),
+  );
+}
+
+ /*disponibilidad(bool or){
+  if(or==true){
+    return Icon(Icons.radio_button_checked_outlined,color: Colors.teal,);
+
+  }
+  else(){
+    return Icon(Icons.radio_button_off,color: Colors.teal,);
+  };
+}*/
