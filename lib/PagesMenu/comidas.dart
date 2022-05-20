@@ -17,7 +17,7 @@ List<OrdenesItem> _totalcomidas = [
   OrdenesItem("Hamburguesa", false, "20", "20", false),
   OrdenesItem("Hot dog", false, "20", "20", false),
   OrdenesItem("Pizza individual", false, "20", "20", false),
-  OrdenesItem("Pizza familiar", false, "20", "20", false),
+  OrdenesItem("Pizza familiarr", false, "20", "20", false),
 ];
 
 class comidas extends StatefulWidget {
